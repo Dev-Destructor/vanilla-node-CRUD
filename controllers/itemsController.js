@@ -38,13 +38,13 @@ const createitem = async (req, res) => {
         const body = await getPostData(req)
         const { title, description, remarks } = JSON.parse(body)
 
-            const item = {
+            const things = {
                 title,
                 description,
                 remarks
             }
             
-            const newitem = await Item.create(Item)
+            const newitem = await Item.create(things)
             res.writeHead(201, {'content-type': 'application/json'})
             return res.end(JSON.stringify(newitem))
     }
@@ -53,8 +53,58 @@ const createitem = async (req, res) => {
     }
 }
 
+//to update one item using PUT api/items/id path
+const updateitem = async (req, res, id) => {
+    try {
+        const item = await Item.findById(id)
+        if (!item) {
+            res.writeHead(404, {'content-type': 'application/json'})
+            res.end(JSON.stringify({message: 'Item Not Found'}))
+        }
+        else {
+            const body = await getPostData(req)
+        const { title, description, remarks } = JSON.parse(body)
+
+            const things = {
+                title: title || Item.title,
+                description: description || Item.description,
+                remarks: remarks || Item.remarks
+            }
+            
+            const upditem = await Item.update(id, things)
+            res.writeHead(201, {'content-type': 'application/json'})
+            return res.end(JSON.stringify(upditem))
+        }
+    }
+    catch(error) {
+        console.log(error)
+    }
+}
+
+//deletes an item using DELETE api/items/id path 
+const removeitem = async (req, res, id) => {
+    try {
+        const item = await Item.findById(id)
+        if (!item) {
+            res.writeHead(404, {'content-type': 'application/json'})
+            res.end(JSON.stringify({message: 'Item Not Found'}))
+        }
+        else {
+            await item.remove(id)
+            res.writeHead(200, {'content-type': 'application/json'})
+            res.end(JSON.stringify({message: `product ${id} has been removed`}))
+        }
+        
+    }
+    catch(error) {
+       console.log(error) 
+    }
+}
+
 module.exports = {
     getitems,
     getitem,
-    createitem
+    createitem,
+    updateitem,
+    removeitem
 }
