@@ -1,0 +1,20 @@
+[{
+    "id": "1",
+    "name": "diode",
+    "description": "semiconductor device made of two regions, one is positive and the other is negative",
+    "remarks": "simple in architecture"
+},
+
+{
+    "id": "2",
+    "name": "bjt",
+    "description": "bipolar junction transistor is made of either two positive and one negative or two negative and one positive regions, it has an emitter, a base and a collector",
+    "remarks": "simple but efficient"
+},
+
+{
+    "id": "3",
+    "name": "mosfet",
+    "description": "metal oxide semiconductor field effect transistor is a semiconductor device with a little more complex circuitry, it has a metal oxide layer and consist of three parts source, drain and gate",
+    "remarks": "complex but highly efficient"
+}]
