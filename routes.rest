@@ -1,1 +1,9 @@
-GET http://localhost:5000/api/item/1
+GET http://localhost:5000/api/items
+
+###
+
+GET http://localhost:5000/api/items/1
+
+###
+
+POST http://localhost:5000/api/items
