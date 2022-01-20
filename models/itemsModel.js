@@ -36,7 +36,7 @@ const update = (id, item) => {
 
 const remove = (id, item) => {
     return new Promise((resolve, reject) => {
-        items = items.filter((p) => p.id !== id)
+        item = items.filter((p) => p.id !== id)
 
         writeDataToFile('./data/items.json', items)
         resolve()

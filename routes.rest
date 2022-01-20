@@ -7,10 +7,24 @@ GET http://localhost:5000/api/items/1
 ###
 
 POST http://localhost:5000/api/items
+Content-Type: application/json
+
+{
+    "name": "pnpn diode",
+    "description": "power semiconductor device made of four regions and two junction points, two is positive and the other other are negative",
+    "remarks": "uncontrolled power device"
+}
 
 ###
 
 PUT http://localhost:5000/api/items/1
+Content-Type: application/json
+
+{
+    "name": "pn junction diode",
+      "description": "semiconductor device made of two regions, one is positive and the other is negative",
+      "remarks": "simple in architecture"
+}
 
 ###
 

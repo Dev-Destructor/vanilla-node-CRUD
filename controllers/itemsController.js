@@ -2,7 +2,7 @@ const Item = require('../models/itemsModel')
 const { getPostData } = require('../utils')
 
 //it gets all items using api/items path
-const getitems = async (req, res) => {
+async function getitems(req, res) {
     try {
         const items = await Item.findAll()
         
@@ -15,7 +15,7 @@ const getitems = async (req, res) => {
 }
 
 //it gets one item using api/item/id path
-const getitem = async (req, res) => {
+async function getitem(req, res, id) {
     try {
         const item = await Item.findById(id)
         if (!item) {
@@ -33,17 +33,15 @@ const getitem = async (req, res) => {
     }
 }
 //it create one item using POST api/items path
-const createitem = async (req, res) => {
+async function createitem(req, res) {
     try {
         const body = await getPostData(req)
-        const { title, description, remarks } = JSON.parse(body)
-
+        const { name, description, remarks } = JSON.parse(body)
             const things = {
-                title,
+                name,
                 description,
                 remarks
             }
-            
             const newitem = await Item.create(things)
             res.writeHead(201, {'content-type': 'application/json'})
             return res.end(JSON.stringify(newitem))
@@ -54,7 +52,7 @@ const createitem = async (req, res) => {
 }
 
 //to update one item using PUT api/items/id path
-const updateitem = async (req, res, id) => {
+async function updateitem(req, res, id) {
     try {
         const item = await Item.findById(id)
         if (!item) {
@@ -63,10 +61,10 @@ const updateitem = async (req, res, id) => {
         }
         else {
             const body = await getPostData(req)
-        const { title, description, remarks } = JSON.parse(body)
+        const { name, description, remarks } = JSON.parse(body)
 
             const things = {
-                title: title || Item.title,
+                name: name || Item.name,
                 description: description || Item.description,
                 remarks: remarks || Item.remarks
             }
@@ -90,7 +88,7 @@ const removeitem = async (req, res, id) => {
             res.end(JSON.stringify({message: 'Item Not Found'}))
         }
         else {
-            await item.remove(id)
+            await Item.remove(id)
             res.writeHead(200, {'content-type': 'application/json'})
             res.end(JSON.stringify({message: `product ${id} has been removed`}))
         }
