@@ -2,8 +2,9 @@
   "name": "clear",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "",
@@ -13,7 +14,6 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "express": "^4.17.2",
     "uuid": "^8.3.2"
   }
 }
