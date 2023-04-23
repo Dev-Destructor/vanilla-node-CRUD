@@ -12,6 +12,7 @@ async function getItems(req, res) {
     systemLog(JSON.stringify(items), 200);
   } catch (error) {
     errorLog(JSON.stringify(error));
+    console.log(error)
     res.writeHead(500, { "content-type": "application/json" });
     res.end(JSON.stringify({ message: "Internal Server Error" }));
   }
@@ -32,6 +33,7 @@ async function getItem(req, res, id) {
     }
   } catch (error) {
     errorLog(JSON.stringify(error));
+    // console.log(JSON.stringify(error))
     res.writeHead(500, { "content-type": "application/json" });
     res.end(JSON.stringify({ message: "Internal Server Error" }));
   }
