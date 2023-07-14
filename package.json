@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^14.2.0",
-    "nodemon": "^2.0.15"
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   }
 }
